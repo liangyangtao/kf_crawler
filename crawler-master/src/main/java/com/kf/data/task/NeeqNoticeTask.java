@@ -18,8 +18,8 @@ import com.kf.data.service.crawler.NeeqCompanyNoticeCrawlerService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqNoticeTask {
 
 	String url = "http://www.neeq.com.cn/disclosureInfoController/infoResult.do?";

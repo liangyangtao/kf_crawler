@@ -2,16 +2,13 @@ package com.kf.data.config;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
@@ -21,9 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.kf.data" })
 @PropertySource(value = { "classpath:application.properties" })
-@MapperScan({ "com.kf.data.mybatis.mapper" })
 public class MyBatisConfiguration {
 
 	@Autowired
@@ -104,12 +99,6 @@ public class MyBatisConfiguration {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
 		dataSourceTransactionManager.setDataSource(dataSource);
 		return dataSourceTransactionManager;
-	}
-
-	@Bean
-	public ScheduledThreadPoolExecutor scheduledExecutorService() {
-		ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
-		return executor;
 	}
 
 }
