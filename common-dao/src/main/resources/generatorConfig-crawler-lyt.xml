@@ -11,8 +11,8 @@
 		<property name="endingDelimiter" value="`" />
 		<!--数据库链接URL，用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://10.24.193.86:3306/crawler?autoReconnect=true"
-			userId="meidi" password="12qwaszx" />
+			connectionURL="jdbc:mysql://localhost:3306/study?autoReconnect=true"
+			userId="spider" password="spider" />
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
@@ -31,8 +31,8 @@
 
 		<!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
 
-		<table schema="crawler" tableName="neeq_company_notice"
-			domainObjectName="NeeqCompanyNoticeCrawler">
+		<table schema="crawler" tableName="im_user_friend"
+			domainObjectName="UserFriend">
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
 				identity="true" type="post" />
 			<!-- <columnOverride column="status" jdbcType="TINYINT"

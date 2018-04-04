@@ -23,15 +23,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController extends CommonController {
 
-	@RequestMapping(value = { "/", "/login", "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String index(ModelMap modelMap) {
-		return "index";
+		return "redirect:/chat";
 	}
 
+	
+	
 	@RequestMapping("/chat")
 	public String chat(ModelMap modelMap) {
 		modelMap.addAttribute("user", getPrincipal());
+		
+		
 		return "chat";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(ModelMap modelMap) {
+		return "index";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

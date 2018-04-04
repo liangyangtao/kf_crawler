@@ -21,7 +21,18 @@
 		<div class="login-container">
 			<div class="login-card">
 				<div class="login-form">
-					<form action="/login" method="post" class="form-horizontal">
+					<c:url var="loginUrl" value="/login" />
+					<form action="${loginUrl}" method="post" class="form-horizontal">
+						<c:if test="${param.error != null}">
+							<div class="alert alert-danger">
+								<p>错误的用户名和密码</p>
+							</div>
+						</c:if>
+						<c:if test="${param.logout != null}">
+							<div class="alert alert-success">
+								<p>成功退出.</p>
+							</div>
+						</c:if>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username"></label> <input
 								type="text" class="form-control" id="username" name="ssoId"
