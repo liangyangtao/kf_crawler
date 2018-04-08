@@ -5,6 +5,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @Title: ChatController.java
@@ -15,22 +16,24 @@ import org.springframework.stereotype.Controller;
  * @version V1.0
  */
 @Controller
+@RequestMapping("/chat")
 public class ChatController extends CommonController {
 
 	private SimpMessagingTemplate template;
 
-	@MessageMapping("/user/{userId}")
-	public void userMessage(String message, @DestinationVariable String userId,
+	@MessageMapping("/userChat/{userId}")
+	public void userChatMessage(String message, @DestinationVariable String userId,
 			StompHeaderAccessor headerAccessor) {
 //		SysUser user = (SysUser) headerAccessor.getUser();
 //		String sessionId = headerAccessor.getSessionId();
-		String dest = "/topic/" + userId + "/" + "greetings";
+		
+		String dest = "/userChat/" + userId + "/greetings";
 		this.template.convertAndSendToUser(userId, dest, message);
 	}
 
-	@MessageMapping("/room/{roomId}")
-	public void roomMessage(String message, @DestinationVariable String roomId) {
-		String dest = "/topic/" + roomId + "/" + "greetings";
+	@MessageMapping("/roomChat/{roomId}")
+	public void roomChatMessage(String message, @DestinationVariable String roomId) {
+		String dest = "/topic/" + roomId + "/greetings";
 		this.template.convertAndSendToUser(roomId,dest, message);
 	}
 

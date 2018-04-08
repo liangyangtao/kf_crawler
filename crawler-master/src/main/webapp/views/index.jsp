@@ -9,10 +9,10 @@
 <title>登陆</title>
 <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.css"
 	rel="stylesheet">
-<link href="/css/app.css" rel="stylesheet"></link>
 <link
 	href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css"
 	rel="stylesheet">
+<link href="/css/app.css" rel="stylesheet"></link>
 
 
 </head>

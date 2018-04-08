@@ -16,5 +16,7 @@ public interface UserFriendService {
 
 	public List<UserFriend> readFriendByUserid(int userId);
 	
+	public List<UserFriend> readFriendByUseridAndGourpId(int userId,int groupId);
+	
 	
 }

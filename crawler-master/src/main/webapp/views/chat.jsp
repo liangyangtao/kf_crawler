@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,10 +11,15 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>LayIM 移动版</title>
 <link rel="stylesheet" href="/layui/css/layui.mobile.css">
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.js"></script>
+<script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
+
 	<script src="/layui/layui.js"></script>
 	<script>
+		var ssoId = "${ssoId}";
 		layui
 				.config({
 					version : true
@@ -37,23 +43,23 @@
 
 							layim.config({
 								uploadImage : {
-									url : '/upload/image',
+									url : '/chat/fileUpload',
 									type : 'post'
 								},
 								uploadFile : {
-									url : '/upload/file',
+									url : '/chat/fileUpload',
 									type : 'post'
 								},
 								copyright : true,
 								isAudio : true,
 								isVideo : true,
 								init : {
-									url : '',
+									url : '/chat/viewInit',
 									type : 'get',
-									data : {}
-								}
-
-								,
+									data : {
+										"ssoId" : ssoId
+									}
+								},
 								members : {
 									url : '',
 									type : 'get',
@@ -70,38 +76,12 @@
 
 								//扩展更多列表
 								,
-								moreList : [ {
-									alias : 'find',
-									title : '发现',
-									iconUnicode : '&#xe628;' //图标字体的unicode，可不填
-									,
-									iconClass : '' //图标字体的class类名
-								}, {
-									alias : 'share',
-									title : '分享与邀请',
-									iconUnicode : '&#xe641;' //图标字体的unicode，可不填
-									,
-									iconClass : '' //图标字体的class类名
-								} ]
 
-								//,tabIndex: 1 //用户设定初始打开的Tab项下标
-								//,isNewFriend: false //是否开启“新的朋友”
-								,
 								isgroup : true
 							//是否开启“群聊”
 							//,chatTitleColor: '#c00' //顶部Bar颜色
 							//,title: 'LayIM' //应用名，默认：我的IM
 							});
-
-							//创建一个会话
-							/*
-							layim.chat({
-							  id: 111111
-							  ,name: '许闲心'
-							  ,type: 'kefu' //friend、group等字符，如果是group，则创建的是群聊
-							  ,avatar: 'http://tp1.sinaimg.cn/1571889140/180/40030060651/1'
-							});
-							 */
 
 							//监听点击“新的朋友”
 							layim

@@ -28,13 +28,9 @@ public class IndexController extends CommonController {
 		return "redirect:/chat";
 	}
 
-	
-	
 	@RequestMapping("/chat")
 	public String chat(ModelMap modelMap) {
-		modelMap.addAttribute("user", getPrincipal());
-		
-		
+		modelMap.addAttribute("ssoId", getPrincipal());
 		return "chat";
 	}
 

@@ -1,18 +1,20 @@
 package com.kf.data.entity.view;
 
+import java.util.List;
+
 /**
- * @Title: GroupView.java
+ * @Title: UserFriendView.java
  * @Package com.kf.data.entity.view
  * @Description: TODO(用一句话描述该文件做什么)
  * @author: liangyt
- * @date: 2018年4月4日 下午2:47:28
+ * @date: 2018年4月8日 下午2:49:32
  * @version V1.0
  */
-public class GroupView {
+public class UserFriendView {
 
 	private String groupname;
 	private String id;
-	private String avatar;
+	private List<UserView> list;
 
 	/**
 	 * @return the groupname
@@ -45,18 +47,18 @@ public class GroupView {
 	}
 
 	/**
-	 * @return the avatar
+	 * @return the list
 	 */
-	public String getAvatar() {
-		return avatar;
+	public List<UserView> getList() {
+		return list;
 	}
 
 	/**
-	 * @param avatar
-	 *            the avatar to set
+	 * @param list
+	 *            the list to set
 	 */
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
+	public void setList(List<UserView> list) {
+		this.list = list;
 	}
 
 }
